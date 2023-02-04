@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using WebApi.Interfaces;
 
 namespace WebApi.Controllers
 {
+    [EnableCors]
     [ApiController]   
     [Route("api/[Controller]")]
     public class ProductsController:ControllerBase

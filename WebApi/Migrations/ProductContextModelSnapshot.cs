@@ -19,12 +19,42 @@ namespace WebApi.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WebApi.Data.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Elektronik"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Giyim"
+                        });
+                });
+
             modelBuilder.Entity("WebApi.Data.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -43,13 +73,16 @@ namespace WebApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2022, 9, 15, 22, 40, 47, 773, DateTimeKind.Local).AddTicks(1869),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2023, 1, 22, 11, 36, 37, 128, DateTimeKind.Local).AddTicks(7154),
                             Name = "Bilgisayar",
                             Price = 15000m,
                             Stock = 300
@@ -57,7 +90,8 @@ namespace WebApi.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2022, 8, 19, 22, 40, 47, 777, DateTimeKind.Local).AddTicks(6534),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 12, 26, 11, 36, 37, 128, DateTimeKind.Local).AddTicks(7798),
                             Name = "Telefon",
                             Price = 10000m,
                             Stock = 500
@@ -65,11 +99,26 @@ namespace WebApi.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2022, 7, 20, 22, 40, 47, 777, DateTimeKind.Local).AddTicks(6566),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 11, 26, 11, 36, 37, 128, DateTimeKind.Local).AddTicks(7802),
                             Name = "Klavye",
                             Price = 500m,
                             Stock = 400
                         });
+                });
+
+            modelBuilder.Entity("WebApi.Data.Product", b =>
+                {
+                    b.HasOne("WebApi.Data.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("WebApi.Data.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

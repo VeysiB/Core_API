@@ -1,0 +1,28 @@
+﻿@model List<ConsumeAPI.ResponseModels.ProductResponseModel>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web Api Consume</title>
+</head>
+<body>
+    <p>MVC works</p>
+    <a asp-action="Create" asp-controller="Home">Yeni Ürün Ekle</a>
+    <table>
+        <tr>
+            <th>Ürünün Adı</th>
+            <th>Ürünün Fiyatı</th>
+            <th>Ürünün Stoğu</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Stock</td>
+                <td>@item.Price</td>               
+            </tr>
+        }
+    </table>
+
+
+</body>
+</html>

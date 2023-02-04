@@ -34,9 +34,20 @@ namespace WebApi
                 opt.UseSqlServer(Configuration.GetConnectionString("Local"));
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt=>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IDummyRepository, DummyRepository>();
+            services.AddCors(cors =>
+            {
+                cors.AddPolicy("veysiCorsPolicy", opt =>
+                {
+                    //.WithOrigins() ile sadece ilgili siteleri  kabul et diyebiliriz
+                    opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
@@ -56,6 +67,7 @@ namespace WebApi
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseCors("veysiCorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

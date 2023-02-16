@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2MzzQPEhJUYhxynpa2FJQXA/Ll1+r6gE67t/fhTqdkIIWIPuhhsEt3ssYAf5o6OHE4elr17UMLRQcFs/5fv1hQ==",
+  "dgSpecHash": "8p5vxIgP059h87fPS7z5msGC2BZqX9HpDhwB7mbVfT9N+mZR0la8nIW24iHpn5o0yUu7wZLQC6pR5ozmU1NUkQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mdskln2660\\source\\repos\\ApplicationUserInterface\\ConsumeAPI\\ConsumeAPI.csproj",
+  "projectFilePath": "C:\\API\\Core_API\\ConsumeAPI\\ConsumeAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mdskln2660\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+    "C:\\Users\\Veysi\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
   ],
   "logs": []
 }

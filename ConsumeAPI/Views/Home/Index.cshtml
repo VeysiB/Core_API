@@ -11,6 +11,7 @@
             <th>Ürünün Adı</th>
             <th>Ürünün Fiyatı</th>
             <th>Ürünün Stoğu</th>
+            <th></th>
         </tr>
         @foreach (var item in Model)
         {
@@ -18,7 +19,11 @@
                 <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>@item.Stock</td>
-                <td>@item.Price</td>               
+                <td>@item.Price</td>   
+                <td>
+                    <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id">Güncelle</a>
+                    <a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id">Sil</a>
+                </td>
             </tr>
         }
     </table>

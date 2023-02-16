@@ -125,3 +125,4 @@ C:\API\Core_API\WebApi\obj\Debug\net5.0\WebApi.dll
 C:\API\Core_API\WebApi\obj\Debug\net5.0\ref\WebApi.dll
 C:\API\Core_API\WebApi\obj\Debug\net5.0\WebApi.pdb
 C:\API\Core_API\WebApi\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
+C:\API\Core_API\WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

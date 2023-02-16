@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace WebApi.Controllers
             _productRepository = productRepository;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var result= await _productRepository.GetAllAsync();
@@ -31,6 +33,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }  
         [HttpGet("{id}")]
+        [Authorize(Roles ="Admin")]
         //api/products/1 FromRoute  [HttpGet("{id}")]
         //api/products?id=1 FromQuery    [HttpGet("{getById}")]
         public async Task<IActionResult> GetById(int id)
